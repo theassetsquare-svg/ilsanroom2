@@ -50,7 +50,13 @@
 
   <!-- Social Proof Bar -->
   <div class="social-bar">
-    <span class="social-count">이 글을 <strong id="readCount">12,847</strong>명이 읽었습니다</span>
+    <span class="social-count">이번 달 <strong id="readCount">12,847</strong>명이 이 글을 읽었습니다</span>
+  </div>
+
+  <!-- Countdown Urgency Bar -->
+  <div class="countdown-bar">
+    <span class="countdown-icon">&#9200;</span>
+    <span>이번 주말 예약 마감 — 남은 자리 <strong id="seatsLeft">3</strong>자리</span>
   </div>
 
   <!-- Hero with dark image overlay -->
@@ -69,13 +75,66 @@
       <p>나는 일산에서 15년째 살고 있다. 웬만한 일산룸은 직접 가봤고, 단골도 있고, 실망한 곳도 있다. 이 글은 그 경험을 바탕으로 쓴다. 광고비 받은 곳 하나도 없다. 그냥 현지인이 현지인한테 알려주는 이야기다.</p>
     </section>
 
-    <!-- Image 1 -->
-    <figure class="photo-section">
-      <div class="img-skeleton">
-        <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=75&auto=format&fit=crop" alt="일산 라페스타 거리 야경 - 네온사인이 빛나는 밤거리" loading="lazy" width="800" height="450" onload="this.parentElement.classList.add('loaded')">
+    <!-- Day vs Night Gallery — Swipeable -->
+    <section class="gallery-section">
+      <h2>낮 vs 밤 — 같은 거리, 다른 세계</h2>
+      <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-slide">
+          <div class="gallery-pair">
+            <figure class="gallery-item">
+              <div class="img-skeleton">
+                <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=75&auto=format&fit=crop" alt="일산 거리 낮 풍경" loading="lazy" width="600" height="400" onload="this.parentElement.classList.add('loaded')">
+              </div>
+              <figcaption>라페스타 — 낮</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <div class="img-skeleton">
+                <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=75&auto=format&fit=crop" alt="일산 라페스타 거리 야경" loading="lazy" width="600" height="400" onload="this.parentElement.classList.add('loaded')">
+              </div>
+              <figcaption>라페스타 — 밤</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="gallery-slide">
+          <div class="gallery-pair">
+            <figure class="gallery-item">
+              <div class="img-skeleton">
+                <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&q=75&auto=format&fit=crop" alt="도시 거리 낮 풍경" loading="lazy" width="600" height="400" onload="this.parentElement.classList.add('loaded')">
+              </div>
+              <figcaption>웨스턴돔 — 낮</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <div class="img-skeleton">
+                <img src="https://images.unsplash.com/photo-1566417713940-fe7c2c85ea06?w=600&q=75&auto=format&fit=crop" alt="웨스턴돔 야간 전경" loading="lazy" width="600" height="400" onload="this.parentElement.classList.add('loaded')">
+              </div>
+              <figcaption>웨스턴돔 — 밤</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="gallery-slide">
+          <div class="gallery-pair">
+            <figure class="gallery-item">
+              <div class="img-skeleton">
+                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&q=75&auto=format&fit=crop" alt="도시 거리 낮 전경" loading="lazy" width="600" height="400" onload="this.parentElement.classList.add('loaded')">
+              </div>
+              <figcaption>정발산역 — 낮</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <div class="img-skeleton">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=75&auto=format&fit=crop" alt="정발산역 야간 분위기" loading="lazy" width="600" height="400" onload="this.parentElement.classList.add('loaded')">
+              </div>
+              <figcaption>정발산역 — 밤</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
-      <figcaption>라페스타 일대는 일산 밤문화의 중심이다</figcaption>
-    </figure>
+      <div class="gallery-dots" id="galleryDots">
+        <button class="dot active" aria-label="슬라이드 1"></button>
+        <button class="dot" aria-label="슬라이드 2"></button>
+        <button class="dot" aria-label="슬라이드 3"></button>
+      </div>
+      <p class="gallery-hint">좌우로 스와이프하세요</p>
+    </section>
 
     <!-- Venue 1: 라페스타 -->
     <section class="section">
@@ -262,6 +321,38 @@
       <figcaption>마두역에서 라페스타까지는 도보 5분이면 충분하다</figcaption>
     </figure>
 
+    <!-- Mini Quiz -->
+    <section class="section quiz-section">
+      <h2>당신에게 맞는 밤문화 유형은?</h2>
+      <p class="quiz-desc">3문항만 답하면 나한테 맞는 일산룸 권역을 추천해드립니다.</p>
+
+      <div id="quizContainer">
+        <!-- Q1 -->
+        <div class="quiz-step active" data-step="1">
+          <p class="quiz-q"><strong>Q1.</strong> 금요일 저녁, 어떤 분위기를 원하는가?</p>
+          <button class="quiz-option" data-value="a" type="button">시끌벅적하고 활기찬 곳</button>
+          <button class="quiz-option" data-value="b" type="button">조용하게 대화할 수 있는 곳</button>
+          <button class="quiz-option" data-value="c" type="button">새롭고 트렌디한 곳</button>
+        </div>
+        <!-- Q2 -->
+        <div class="quiz-step" data-step="2">
+          <p class="quiz-q"><strong>Q2.</strong> 이동 수단은?</p>
+          <button class="quiz-option" data-value="a" type="button">지하철 + 도보</button>
+          <button class="quiz-option" data-value="b" type="button">자차 (주차 중요)</button>
+          <button class="quiz-option" data-value="c" type="button">택시 / 대리운전</button>
+        </div>
+        <!-- Q3 -->
+        <div class="quiz-step" data-step="3">
+          <p class="quiz-q"><strong>Q3.</strong> 가장 중요하게 생각하는 건?</p>
+          <button class="quiz-option" data-value="a" type="button">선택지가 많은 것</button>
+          <button class="quiz-option" data-value="b" type="button">검증된 서비스 품질</button>
+          <button class="quiz-option" data-value="c" type="button">깔끔한 최신 시설</button>
+        </div>
+        <!-- Result -->
+        <div class="quiz-result" id="quizResult"></div>
+      </div>
+    </section>
+
     <!-- Secret Reveal — 80% scroll -->
     <section class="section secret-section" id="secretSection">
       <div class="secret-badge">현지인만 아는 정보</div>
@@ -301,6 +392,18 @@
     <p>본 사이트는 정보 제공 목적으로 운영됩니다.</p>
     <p>일산 밤문화 정보 &mdash; 현지인 기반 솔직 가이드</p>
   </footer>
+
+  <!-- Exit Intent Popup -->
+  <div class="exit-popup" id="exitPopup">
+    <div class="exit-popup-inner">
+      <button class="exit-close" id="exitClose" type="button" aria-label="닫기">&#10005;</button>
+      <p class="exit-title">잠깐! 이것만 보고 가세요</p>
+      <p class="exit-desc">일산룸 현지인 꿀팁을 놓치면 후회합니다. 놀쿨에서 실시간 후기와 추천 정보를 확인하세요.</p>
+      <a href="https://nolcool.com" class="cta-button exit-cta" target="_blank" rel="noopener">
+        놀쿨에서 더 많은 곳 보기 →
+      </a>
+    </div>
+  </div>
 
   <script defer src="/script.js"></script>
 </body>
