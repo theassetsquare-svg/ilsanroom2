@@ -866,17 +866,11 @@ body {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* PC: hide bottom bar, remove body padding */
   .fixed-bottom-bar {
-    display: none;
-  }
-
-  body {
-    padding-bottom: 0;
-  }
-
-  .footer {
-    padding-bottom: 40px;
+    max-width: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 14px 14px 0 0;
   }
 
   .content {
