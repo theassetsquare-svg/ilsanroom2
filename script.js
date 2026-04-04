@@ -118,7 +118,7 @@
     resultEl.innerHTML =
       '<p class="quiz-result-title">' + r.title + '</p>' +
       '<p class="quiz-result-desc">' + r.desc + '</p>' +
-      '<a href="https://nolcool.com" class="cta-button" target="_blank" rel="noopener">놀쿨에서 자세히 보기 →</a>';
+      '<a href="https://ilsanroom.pages.dev/" class="cta-button" target="_blank" rel="noopener">놀쿨에서 자세히 보기 →</a>';
     resultEl.classList.add('show');
   }
 })();
