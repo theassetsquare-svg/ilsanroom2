@@ -67,6 +67,14 @@
     </div>
   </header>
 
+  <!-- Internal Search Bar -->
+  <div class="search-wrap">
+    <div class="search-inner">
+      <input type="text" id="searchInput" class="search-input" placeholder="궁금한 키워드를 입력하세요 (예: 라페스타, 주차, 예약)">
+      <div id="searchResults" class="search-results"></div>
+    </div>
+  </div>
+
   <main class="content">
 
     <!-- Intro -->
@@ -186,7 +194,7 @@
     </section>
 
     <!-- CTA 1 — 40% scroll point -->
-    <a href="https://ilsanroom.pages.dev/" class="cta-button" target="_blank" rel="noopener">
+    <a href="https://ilsanroom.pages.dev/" class="cta-button" target="_blank" rel="noopener noreferrer">
       놀쿨에서 더 많은 정보 보기 →
     </a>
 
@@ -381,7 +389,7 @@
     </section>
 
     <!-- CTA 2 — Bottom -->
-    <a href="https://ilsanroom.pages.dev/" class="cta-button" target="_blank" rel="noopener">
+    <a href="https://ilsanroom.pages.dev/" class="cta-button" target="_blank" rel="noopener noreferrer">
       놀쿨에서 더 보기 →
     </a>
 
@@ -399,10 +407,18 @@
       <button class="exit-close" id="exitClose" type="button" aria-label="닫기">&#10005;</button>
       <p class="exit-title">잠깐! 이것만 보고 가세요</p>
       <p class="exit-desc">일산룸 현지인 꿀팁을 놓치면 후회합니다. 놀쿨에서 실시간 후기와 추천 정보를 확인하세요.</p>
-      <a href="https://ilsanroom.pages.dev/" class="cta-button exit-cta" target="_blank" rel="noopener">
+      <a href="https://ilsanroom.pages.dev/" class="cta-button exit-cta" target="_blank" rel="noopener noreferrer">
         놀쿨에서 더 많은 곳 보기 →
       </a>
     </div>
+  </div>
+
+  <!-- Fixed Bottom Contact Bar (Mobile) -->
+  <div class="fixed-bottom-bar">
+    <a href="https://ilsanroom.pages.dev/" class="bottom-bar-link" target="_blank" rel="noopener noreferrer">
+      <span class="bottom-bar-icon">&#128222;</span>
+      <span>일산룸 메인 사이트 바로가기</span>
+    </a>
   </div>
 
   <script defer src="/script.js"></script>

@@ -1,3 +1,67 @@
+// Internal Search — filters page sections
+(function () {
+  var input = document.getElementById('searchInput');
+  var resultsBox = document.getElementById('searchResults');
+  if (!input || !resultsBox) return;
+
+  var sections = document.querySelectorAll('.section, .review-highlights, .gallery-section, .quiz-section, .secret-section');
+  var searchData = [];
+  for (var i = 0; i < sections.length; i++) {
+    var heading = sections[i].querySelector('h2, h3');
+    var text = sections[i].textContent.replace(/\s+/g, ' ').trim();
+    searchData.push({
+      title: heading ? heading.textContent.trim() : '섹션 ' + (i + 1),
+      text: text,
+      el: sections[i]
+    });
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim().toLowerCase();
+    resultsBox.innerHTML = '';
+
+    if (query.length < 2) {
+      resultsBox.style.display = 'none';
+      return;
+    }
+
+    var matches = [];
+    for (var i = 0; i < searchData.length; i++) {
+      if (searchData[i].text.toLowerCase().indexOf(query) !== -1) {
+        matches.push(searchData[i]);
+      }
+    }
+
+    if (matches.length === 0) {
+      resultsBox.innerHTML = '<div class="search-item">검색 결과가 없습니다</div>';
+      resultsBox.style.display = 'block';
+      return;
+    }
+
+    for (var j = 0; j < matches.length; j++) {
+      (function (match) {
+        var item = document.createElement('button');
+        item.className = 'search-item';
+        item.type = 'button';
+        item.textContent = match.title;
+        item.addEventListener('click', function () {
+          match.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          resultsBox.style.display = 'none';
+          input.value = '';
+        });
+        resultsBox.appendChild(item);
+      })(matches[j]);
+    }
+    resultsBox.style.display = 'block';
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.search-wrap')) {
+      resultsBox.style.display = 'none';
+    }
+  });
+})();
+
 // Monthly read count
 (function () {
   var countEl = document.getElementById('readCount');
@@ -118,7 +182,7 @@
     resultEl.innerHTML =
       '<p class="quiz-result-title">' + r.title + '</p>' +
       '<p class="quiz-result-desc">' + r.desc + '</p>' +
-      '<a href="https://ilsanroom.pages.dev/" class="cta-button" target="_blank" rel="noopener">놀쿨에서 자세히 보기 →</a>';
+      '<a href="https://ilsanroom.pages.dev/" class="cta-button" target="_blank" rel="noopener noreferrer">놀쿨에서 자세히 보기 →</a>';
     resultEl.classList.add('show');
   }
 })();
