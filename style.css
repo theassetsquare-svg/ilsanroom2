@@ -1,1 +1,203 @@
-/* Add styles here */
+/* === Reset & Base === */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #1a1a1a;
+  background: #fafafa;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === Social Proof Bar === */
+.social-bar {
+  background: #2d1b69;
+  color: #fff;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  letter-spacing: -0.02em;
+}
+
+.social-bar strong {
+  color: #c4a0ff;
+  font-weight: 900;
+}
+
+/* === Hero === */
+.hero {
+  background: linear-gradient(135deg, #1a0a3e 0%, #3b1d8e 50%, #6b3fa0 100%);
+  color: #fff;
+  padding: 60px 20px 50px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+  word-break: keep-all;
+}
+
+.hero-sub {
+  font-size: 1.125rem;
+  color: #c4a0ff;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* === Content === */
+.content {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* === Section === */
+.section {
+  padding: 36px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.section h2 {
+  font-size: 1.375rem;
+  font-weight: 900;
+  color: #1a0a3e;
+  margin-bottom: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+.section p {
+  margin-bottom: 14px;
+  color: #333;
+  word-break: keep-all;
+}
+
+.section p:last-child {
+  margin-bottom: 0;
+}
+
+/* === Photo Sections === */
+.photo-section {
+  margin: 32px 0;
+}
+
+.photo-placeholder {
+  background: linear-gradient(135deg, #2d1b69, #4a2d8e);
+  border-radius: 12px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.photo-caption {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: #888;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* === Pull Quote === */
+.pull-quote {
+  font-size: 1.375rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #3b1d8e;
+  text-align: center;
+  padding: 40px 24px;
+  margin: 8px 0;
+  border-left: 4px solid #6b3fa0;
+  background: linear-gradient(135deg, #f5f0ff 0%, #ede5ff 100%);
+  border-radius: 0 12px 12px 0;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* === CTA Button === */
+.cta-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  height: 56px;
+  line-height: 56px;
+  background: linear-gradient(135deg, #6b3fa0 0%, #8b5cf6 100%);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 900;
+  border-radius: 14px;
+  margin: 32px 0;
+  min-height: 44px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(107, 63, 160, 0.3);
+  letter-spacing: -0.01em;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(107, 63, 160, 0.45);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f0f0f0;
+  color: #888;
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+/* === Responsive === */
+@media (min-width: 768px) {
+  .hero {
+    padding: 80px 40px 70px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-sub {
+    font-size: 1.25rem;
+  }
+
+  .section h2 {
+    font-size: 1.625rem;
+  }
+
+  .pull-quote {
+    font-size: 1.5rem;
+    padding: 48px 40px;
+  }
+
+  .photo-placeholder {
+    height: 300px;
+  }
+}
