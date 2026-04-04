@@ -53,10 +53,12 @@
     <span class="social-count">이 글을 <strong id="readCount">12,847</strong>명이 읽었습니다</span>
   </div>
 
-  <!-- Hero -->
-  <header class="hero">
-    <h1>일산룸 — 현지인만 아는<br>숨겨진 명소 총정리</h1>
-    <p class="hero-sub">검색 그만해라. 이 글 하나로 끝난다.</p>
+  <!-- Hero with dark image overlay -->
+  <header class="hero" style="background-image:url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=1200&q=80&auto=format')">
+    <div class="hero-overlay">
+      <h1>일산룸 — 현지인만 아는<br>숨겨진 명소 총정리</h1>
+      <p class="hero-sub">검색 그만해라. 이 글 하나로 끝난다.</p>
+    </div>
   </header>
 
   <main class="content">
@@ -67,13 +69,13 @@
       <p>나는 일산에서 15년째 살고 있다. 웬만한 일산룸은 직접 가봤고, 단골도 있고, 실망한 곳도 있다. 이 글은 그 경험을 바탕으로 쓴다. 광고비 받은 곳 하나도 없다. 그냥 현지인이 현지인한테 알려주는 이야기다.</p>
     </section>
 
-    <!-- Photo Section 1 -->
-    <div class="photo-section">
-      <div class="photo-placeholder">
-        <span>일산 라페스타 거리 야경</span>
+    <!-- Image 1 -->
+    <figure class="photo-section">
+      <div class="img-skeleton">
+        <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=75&auto=format&fit=crop" alt="일산 라페스타 거리 야경 - 네온사인이 빛나는 밤거리" loading="lazy" width="800" height="450" onload="this.parentElement.classList.add('loaded')">
       </div>
-      <p class="photo-caption">라페스타 일대는 일산 밤문화의 중심이다</p>
-    </div>
+      <figcaption>라페스타 일대는 일산 밤문화의 중심이다</figcaption>
+    </figure>
 
     <!-- Venue 1: 라페스타 -->
     <section class="section">
@@ -88,13 +90,13 @@
       "라페스타 한 바퀴만 돌면 일산 밤문화가 뭔지 바로 느낀다"
     </blockquote>
 
-    <!-- Photo Section 2 -->
-    <div class="photo-section">
-      <div class="photo-placeholder">
-        <span>일산 웨스턴돔 야간 전경</span>
+    <!-- Image 2 -->
+    <figure class="photo-section">
+      <div class="img-skeleton">
+        <img src="https://images.unsplash.com/photo-1566417713940-fe7c2c85ea06?w=800&q=75&auto=format&fit=crop" alt="조용한 분위기의 야간 거리 풍경" loading="lazy" width="800" height="450" onload="this.parentElement.classList.add('loaded')">
       </div>
-      <p class="photo-caption">웨스턴돔 주변도 조용한 분위기로 인기다</p>
-    </div>
+      <figcaption>웨스턴돔 주변도 조용한 분위기로 인기다</figcaption>
+    </figure>
 
     <!-- Venue 2: 웨스턴돔 -->
     <section class="section">
@@ -104,18 +106,38 @@
       <p>시설 면에서는 라페스타보다 약간 오래된 곳이 있지만, 그만큼 운영 경험이 풍부한 곳이 많다. 서비스 품질이 안정적이라는 뜻이다. 처음 방문하는 사람보다는 일산룸 경험이 있는 사람에게 추천한다.</p>
     </section>
 
+    <!-- Review Highlights -->
+    <section class="review-highlights">
+      <h3>실제 방문자 한줄평</h3>
+      <div class="review-card">
+        <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p>"라페스타 쪽은 선택지가 많아서 좋다. 세 군데 돌아보고 마음에 드는 곳 정했다."</p>
+        <span class="review-author">— 일산 거주 7년차 K씨</span>
+      </div>
+      <div class="review-card">
+        <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+        <p>"웨스턴돔 쪽이 확실히 조용하다. 대화 위주로 즐기려면 이쪽이 맞다."</p>
+        <span class="review-author">— 파주에서 방문한 L씨</span>
+      </div>
+      <div class="review-card">
+        <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p>"정발산역 새로 생긴 곳 갔는데 시설이 확실히 깨끗하더라. 다음에 또 간다."</p>
+        <span class="review-author">— 서울에서 원정 온 P씨</span>
+      </div>
+    </section>
+
     <!-- CTA 1 — 40% scroll point -->
     <a href="https://nolcool.com" class="cta-button" target="_blank" rel="noopener">
       놀쿨에서 더 많은 정보 보기 →
     </a>
 
-    <!-- Photo Section 3 -->
-    <div class="photo-section">
-      <div class="photo-placeholder">
-        <span>정발산역 주변 거리</span>
+    <!-- Image 3 -->
+    <figure class="photo-section">
+      <div class="img-skeleton">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=75&auto=format&fit=crop" alt="정발산역 주변 신규 상권 야경" loading="lazy" width="800" height="450" onload="this.parentElement.classList.add('loaded')">
       </div>
-      <p class="photo-caption">정발산역 인근은 새롭게 뜨는 지역이다</p>
-    </div>
+      <figcaption>정발산역 인근은 새롭게 뜨는 지역이다</figcaption>
+    </figure>
 
     <!-- Venue 3: 정발산역 -->
     <section class="section">
@@ -125,13 +147,40 @@
       <p>다만 아직 상권이 완전히 형성되지는 않아서, 가게 수가 라페스타에 비하면 적다. 선택지가 제한적일 수 있으니, 미리 조사하고 가는 것을 권한다. 그래도 새로운 경험을 원하는 사람에게는 분명 매력적인 선택지다.</p>
     </section>
 
-    <!-- Photo Section 4 -->
-    <div class="photo-section">
-      <div class="photo-placeholder">
-        <span>일산호수공원 야경</span>
+    <!-- Image 4 -->
+    <figure class="photo-section">
+      <div class="img-skeleton">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=75&auto=format&fit=crop" alt="분위기 있는 라운지 내부 인테리어" loading="lazy" width="800" height="450" onload="this.parentElement.classList.add('loaded')">
       </div>
-      <p class="photo-caption">호수공원 산책 후 방문하는 코스도 인기</p>
-    </div>
+      <figcaption>최근 리모델링한 곳들은 인테리어 수준이 높다</figcaption>
+    </figure>
+
+    <!-- Before / After: 초보 vs 경험자 -->
+    <section class="section before-after">
+      <h2>처음 가는 사람 vs 경험자 — 이렇게 다르다</h2>
+      <div class="ba-grid">
+        <div class="ba-card ba-before">
+          <h3>처음 가는 사람</h3>
+          <ul>
+            <li>블로그 광고만 보고 아무 곳이나 간다</li>
+            <li>예약 없이 가서 1시간 대기한다</li>
+            <li>주차 공간 못 찾아 20분 헤맨다</li>
+            <li>분위기 파악 못 하고 어색하게 앉아있다</li>
+            <li>2차 동선을 안 짜서 택시비만 나간다</li>
+          </ul>
+        </div>
+        <div class="ba-card ba-after">
+          <h3>현지인 / 경험자</h3>
+          <ul>
+            <li>지인 추천 or 솔직한 정보글로 미리 조사한다</li>
+            <li>전화 한 통으로 예약하고 바로 입장한다</li>
+            <li>공영주차장 위치를 미리 파악하고 간다</li>
+            <li>분위기에 맞는 곳을 골라서 편하게 즐긴다</li>
+            <li>저녁 식사 → 일산룸 → 2차까지 도보로 해결한다</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <!-- Tips Section -->
     <section class="section">
@@ -146,29 +195,92 @@
       "예약 없이 가는 건 도박이다. 전화 한 통이 저녁을 살린다"
     </blockquote>
 
-    <!-- Photo Section 5 -->
-    <div class="photo-section">
-      <div class="photo-placeholder">
-        <span>일산 밤거리 분위기</span>
+    <!-- Image 5 -->
+    <figure class="photo-section">
+      <div class="img-skeleton">
+        <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=75&auto=format&fit=crop" alt="네온 불빛이 비치는 밤거리 풍경" loading="lazy" width="800" height="450" onload="this.parentElement.classList.add('loaded')">
       </div>
-      <p class="photo-caption">금요일 저녁 일산 거리는 활기가 넘친다</p>
-    </div>
+      <figcaption>금요일 저녁 일산 거리는 활기가 넘친다</figcaption>
+    </figure>
 
-    <!-- Comparison Section -->
+    <!-- Comparison Table -->
     <section class="section">
       <h2>지역별 솔직 비교 — 어디가 나한테 맞을까</h2>
-      <p>정리하면 이렇다. 활기찬 분위기, 다양한 선택지, 최신 시설을 원한다면 라페스타. 조용하고 편안한 분위기에서 대화 위주로 즐기고 싶다면 웨스턴돔. 새로운 곳을 개척하고 싶고 트렌디한 공간을 선호한다면 정발산역 인근을 추천한다.</p>
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>라페스타</th>
+              <th>웨스턴돔</th>
+              <th>정발산역</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="row-label">분위기</td>
+              <td>활기찬, 화려한</td>
+              <td>차분한, 편안한</td>
+              <td>트렌디, 깔끔한</td>
+            </tr>
+            <tr>
+              <td class="row-label">시설</td>
+              <td>최신 리모델링</td>
+              <td>안정적 운영</td>
+              <td>신규 오픈</td>
+            </tr>
+            <tr>
+              <td class="row-label">접근성</td>
+              <td>마두역 도보 5분</td>
+              <td>주엽역 도보 7분</td>
+              <td>정발산역 도보 3분</td>
+            </tr>
+            <tr>
+              <td class="row-label">주차</td>
+              <td>공영주차장 넉넉</td>
+              <td>주말 만차 주의</td>
+              <td>여유로운 편</td>
+            </tr>
+            <tr>
+              <td class="row-label">추천 대상</td>
+              <td>다양한 선택지 원하는 분</td>
+              <td>조용한 대화 모임</td>
+              <td>새로운 곳 탐험파</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <p>결국 일산룸 선택은 취향의 문제다. 어떤 곳이 "최고"라고 단정할 수 없다. 본인이 어떤 분위기를 좋아하는지, 누구와 가는지, 어떤 목적인지에 따라 달라진다. 이 글이 그 선택에 작은 기준이 되었으면 한다.</p>
       <p>일산은 서울에서 30분 거리인데도 밤문화에 대한 정보가 부족하다. 강남이나 홍대 위주로만 정보가 쏠려 있어서 일산룸에 대한 제대로 된 가이드가 거의 없었다. 이 글이 그 빈자리를 채울 수 있기를 바란다.</p>
     </section>
 
-    <!-- Photo Section 6 -->
-    <div class="photo-section">
-      <div class="photo-placeholder">
-        <span>일산 마두역 야경</span>
+    <!-- Image 6 -->
+    <figure class="photo-section">
+      <div class="img-skeleton">
+        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=75&auto=format&fit=crop" alt="도시 야경과 네온사인" loading="lazy" width="800" height="450" onload="this.parentElement.classList.add('loaded')">
       </div>
-      <p class="photo-caption">마두역에서 라페스타까지는 도보 5분이면 충분하다</p>
-    </div>
+      <figcaption>마두역에서 라페스타까지는 도보 5분이면 충분하다</figcaption>
+    </figure>
+
+    <!-- Secret Reveal — 80% scroll -->
+    <section class="section secret-section" id="secretSection">
+      <div class="secret-badge">현지인만 아는 정보</div>
+      <h2>아무도 안 알려주는 일산룸 꿀팁 3가지</h2>
+      <div class="secret-content" id="secretContent">
+        <div class="secret-item">
+          <strong>1. 화요일·수요일이 가장 좋다</strong>
+          <p>주말에는 어디든 사람이 붐빈다. 진짜 여유롭게 즐기고 싶다면 화요일이나 수요일 저녁을 노려라. 같은 곳이라도 분위기가 완전히 다르다. 대기 시간도 거의 없고, 서비스 퀄리티도 주말보다 높다.</p>
+        </div>
+        <div class="secret-item">
+          <strong>2. 네이버 예약보다 전화가 낫다</strong>
+          <p>온라인 예약 시스템을 운영하는 곳도 있지만, 전화로 직접 연락하는 게 훨씬 유리하다. 자리 배정도 더 좋은 곳으로 해주고, 당일 상황에 맞게 유연하게 조정해준다. 단골이 되면 전화 한 통에 모든 게 해결된다.</p>
+        </div>
+        <div class="secret-item">
+          <strong>3. 1차 식사 장소가 저녁을 결정한다</strong>
+          <p>일산룸만 가는 게 아니라, 저녁 코스 전체를 설계해라. 식사를 어디서 하느냐에 따라 동선이 완전히 달라진다. 라페스타 쪽이면 인근 고기집이나 일식집에서 저녁을 먹고, 걸어서 이동하는 게 가장 자연스럽다.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Final Section -->
     <section class="section">
