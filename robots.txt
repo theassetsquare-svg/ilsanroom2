@@ -5,6 +5,9 @@ Sitemap: https://ilsanroom2.pages.dev/sitemap.xml
 User-agent: Googlebot
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /
+
 User-agent: Yeti
 Allow: /
 
@@ -33,4 +36,13 @@ User-agent: Bingbot
 Allow: /
 
 User-agent: Kakaotalk-scrap
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Slurp
 Allow: /

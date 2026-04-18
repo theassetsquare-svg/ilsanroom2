@@ -210,6 +210,49 @@
   window.addEventListener('scroll', checkScroll, { passive: true });
 })();
 
+// FAQ Accordion
+(function () {
+  var questions = document.querySelectorAll('.faq-question');
+  for (var i = 0; i < questions.length; i++) {
+    (function (q) {
+      function toggle() {
+        var answer = q.nextElementSibling;
+        var isOpen = q.getAttribute('aria-expanded') === 'true';
+        q.setAttribute('aria-expanded', !isOpen);
+        if (isOpen) {
+          answer.classList.remove('open');
+        } else {
+          answer.classList.add('open');
+        }
+      }
+      q.addEventListener('click', toggle);
+      q.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
+      });
+    })(questions[i]);
+  }
+})();
+
+// Smooth scroll for TOC links
+(function () {
+  var tocLinks = document.querySelectorAll('.toc-list a');
+  for (var i = 0; i < tocLinks.length; i++) {
+    tocLinks[i].addEventListener('click', function (e) {
+      var href = this.getAttribute('href');
+      if (href && href.charAt(0) === '#') {
+        var target = document.getElementById(href.substring(1));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  }
+})();
+
 // Exit Intent — scroll up detection (mobile-friendly)
 (function () {
   var popup = document.getElementById('exitPopup');
