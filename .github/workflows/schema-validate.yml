@@ -1,0 +1,62 @@
+name: Schema Validate
+on:
+  schedule:
+    - cron: '0 4 * * *'    # KST 13:00
+  push:
+    paths:
+      - 'index.html'
+      - 'legal/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON-LD blocks (syntax) — local
+        run: |
+          python3 - <<'PY'
+          import re, json, sys, pathlib
+          ok = True
+          for path in ['index.html', 'legal/index.html']:
+              html = pathlib.Path(path).read_text(encoding='utf-8')
+              blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, flags=re.S)
+              print(f"{path}: {len(blocks)} JSON-LD block(s)")
+              for i, b in enumerate(blocks, 1):
+                  try:
+                      json.loads(b)
+                      print(f"  block #{i}: OK")
+                  except Exception as e:
+                      print(f"  block #{i}: INVALID — {e}")
+                      ok = False
+          sys.exit(0 if ok else 1)
+          PY
+
+      - name: Check live site for AggregateRating (영구 룰 — 가짜 별점 금지)
+        run: |
+          if curl -sL https://ilsanroom2.pages.dev/ | grep -q "AggregateRating"; then
+            echo "::error::AggregateRating Schema detected — 영구 룰 위반"
+            exit 1
+          fi
+          echo "✅ AggregateRating 없음 — 영구 룰 통과"
+
+      - name: Check live site for banned phrases (영구 룰 — 합법성)
+        run: |
+          BANNED=$(curl -sL https://ilsanroom2.pages.dev/ | grep -oE "룸살롱|밤문화|유흥" | wc -l)
+          if [ "$BANNED" -gt 0 ]; then
+            echo "::warning::금지어 ${BANNED}건 감지 — 다음 배포 후 재확인 필요"
+          else
+            echo "✅ 금지어 0건 — 합법성 통과"
+          fi
+
+      - name: Check required Schema types
+        run: |
+          HTML=$(curl -sL https://ilsanroom2.pages.dev/)
+          for T in WebSite Article BreadcrumbList LocalBusiness FAQPage; do
+            if echo "$HTML" | grep -q "\"@type\": \"$T\""; then
+              echo "✅ $T schema present"
+            else
+              echo "::warning::$T schema not found on live site"
+            fi
+          done

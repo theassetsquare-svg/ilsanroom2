@@ -1,0 +1,46 @@
+name: Lighthouse CI
+on:
+  schedule:
+    - cron: '30 3 * * *'   # KST 12:30
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Lighthouse
+        run: npm install -g lighthouse@12 chrome-launcher
+
+      - name: Run Lighthouse — Mobile
+        run: |
+          lighthouse https://ilsanroom2.pages.dev/ \
+            --only-categories=seo,performance,accessibility,best-practices,pwa \
+            --form-factor=mobile \
+            --output=json --output=html \
+            --output-path=./lighthouse-mobile \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --quiet || true
+
+      - name: Run Lighthouse — Desktop
+        run: |
+          lighthouse https://ilsanroom2.pages.dev/ \
+            --only-categories=seo,performance,accessibility,best-practices,pwa \
+            --preset=desktop \
+            --output=json --output=html \
+            --output-path=./lighthouse-desktop \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --quiet || true
+
+      - name: Upload Lighthouse reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports-${{ github.run_id }}
+          path: |
+            lighthouse-mobile.*
+            lighthouse-desktop.*
+          retention-days: 30

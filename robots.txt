@@ -1,11 +1,22 @@
+# 일산룸 현지인 가이드 — robots.txt
+# 모든 봇 Allow (Disallow 없음). AI/검색 봇 명시.
+
 User-agent: *
 Allow: /
-Sitemap: https://ilsanroom2.pages.dev/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
 
 User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
 Allow: /
 
 User-agent: Yeti
@@ -17,25 +28,34 @@ Allow: /
 User-agent: Daumoa
 Allow: /
 
+User-agent: Kakaotalk-scrap
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: Google-Extended
-Allow: /
-
-User-agent: PerplexityBot
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Bingbot
+User-agent: anthropic-ai
 Allow: /
 
-User-agent: Kakaotalk-scrap
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 User-agent: Twitterbot
@@ -44,5 +64,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: Slurp
-Allow: /
+Sitemap: https://ilsanroom2.pages.dev/sitemap.xml
+Host: ilsanroom2.pages.dev

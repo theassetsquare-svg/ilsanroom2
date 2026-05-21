@@ -1,0 +1,50 @@
+name: Live Health Check
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # 6시간마다
+  workflow_dispatch:
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check 200 OK on all endpoints
+        run: |
+          set -e
+          for URL in \
+            "https://ilsanroom2.pages.dev/" \
+            "https://ilsanroom2.pages.dev/legal/" \
+            "https://ilsanroom2.pages.dev/sitemap.xml" \
+            "https://ilsanroom2.pages.dev/robots.txt" \
+            "https://ilsanroom2.pages.dev/llms.txt" \
+            "https://ilsanroom2.pages.dev/site.webmanifest" \
+            "https://ilsanroom2.pages.dev/sw.js" \
+            "https://ilsanroom2.pages.dev/icon-192.png" \
+            "https://ilsanroom2.pages.dev/icon-512.png" \
+            "https://ilsanroom2.pages.dev/og-image.png" ; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+            if [ "$STATUS" != "200" ]; then
+              echo "::error::$URL → HTTP $STATUS"
+              exit 1
+            fi
+            echo "✅ $URL → 200"
+          done
+
+      - name: Check key meta tags present
+        run: |
+          HTML=$(curl -sL https://ilsanroom2.pages.dev/)
+          for NEEDLE in \
+            "<title>" \
+            "canonical" \
+            "og:url" \
+            "manifest" \
+            "theme-color" \
+            "FAQPage" \
+            "LocalBusiness" ; do
+            if echo "$HTML" | grep -q "$NEEDLE"; then
+              echo "✅ $NEEDLE present"
+            else
+              echo "::error::$NEEDLE missing"
+              exit 1
+            fi
+          done
