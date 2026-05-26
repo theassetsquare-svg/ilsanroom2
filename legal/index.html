@@ -24,6 +24,11 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
   <meta name="theme-color" content="#8B0000">
+  <style>
+    body{padding-bottom:56px}
+    .skip-link{position:absolute;top:-44px;left:0;background:#1a0a3e;color:#fff;padding:8px 16px;z-index:10000;text-decoration:none;font-weight:700}
+    .skip-link:focus{top:0}
+  </style>
   <link rel="stylesheet" href="/style.css">
 
   <script type="application/ld+json">
@@ -51,6 +56,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">본문 바로가기</a>
+
   <nav class="breadcrumb" aria-label="현재 위치">
     <ol>
       <li><a href="/">홈</a></li>
@@ -58,7 +65,7 @@
     </ol>
   </nav>
 
-  <main class="content">
+  <main class="content" id="main">
 
     <section class="section">
       <h1>일산룸 가이드 — 합법 운영 정책</h1>
@@ -130,8 +137,15 @@
   <footer class="footer">
     <p>본 사이트는 정보 제공 목적으로 운영됩니다.</p>
     <p>일산룸 현지인 가이드 &mdash; 만 19세 이상 성인 대상 운영</p>
-    <p class="footer-update">최종 업데이트: 2026년 5월 21일</p>
+    <p class="footer-update">최종 업데이트: 2026년 5월 26일</p>
   </footer>
+
+  <div class="fixed-bottom-bar">
+    <a href="tel:01036954929" class="bottom-bar-link">
+      <span class="bottom-bar-icon">&#128222;</span>
+      <span>신실장 010-3695-4929</span>
+    </a>
+  </div>
 
 </body>
 </html>
