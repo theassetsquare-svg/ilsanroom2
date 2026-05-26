@@ -1,0 +1,53 @@
+name: SEO Watchdog (24h Automated)
+
+on:
+  schedule:
+    # Every hour at :15 — keyword density, title uniqueness, dead links, schema
+    - cron: '15 * * * *'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: SEO audit + dead links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: SEO audit
+        run: python3 scripts/seo_audit.py
+      - name: Dead link scan
+        run: python3 scripts/dead_link_check.py
+
+  live:
+    name: Live healthcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Live healthcheck (all sitemap URLs)
+        run: python3 scripts/live_check.py
+
+  ping:
+    name: Sitemap ping
+    runs-on: ubuntu-latest
+    # Only ping on push (deploy) or once a day, not every hour
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ping search engines
+        run: python3 scripts/ping_sitemap.py
