@@ -987,7 +987,7 @@ body {
 }
 
 .faq-answer.open {
-  max-height: 300px;
+  max-height: 800px;
   padding: 0 20px 16px;
 }
 

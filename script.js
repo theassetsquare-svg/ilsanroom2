@@ -1,3 +1,21 @@
+// Image skeleton fallback — if any image errors or is already cached/complete,
+// reveal it so the .img-skeleton shimmer never animates forever. (capture phase)
+(function () {
+  function reveal(img) {
+    if (img && img.parentElement) img.parentElement.classList.add('loaded');
+  }
+  document.addEventListener('error', function (e) {
+    var t = e.target;
+    if (t && t.tagName === 'IMG') reveal(t);
+  }, true);
+  document.addEventListener('DOMContentLoaded', function () {
+    var imgs = document.querySelectorAll('.img-skeleton img, img[loading="lazy"]');
+    for (var i = 0; i < imgs.length; i++) {
+      if (imgs[i].complete) reveal(imgs[i]);
+    }
+  });
+})();
+
 // Internal Search — filters page sections
 (function () {
   var input = document.getElementById('searchInput');

@@ -1,0 +1,94 @@
+name: GSC Monitor + Auto-Submit
+
+# Daily Google Search Console health monitor.
+# - Submits sitemap via the GSC API (forces Google to (re)discover all pages)
+# - Checks index coverage, rankings, cannibalization, CTR, rank drops
+# - Emails theassetsquare@gmail.com when an actionable problem is found
+#
+# Required repo secret:
+#   GSC_CREDENTIALS    — full JSON of the theasset-gsc service account key
+# Optional repo secrets (enable email alerts):
+#   GMAIL_USER         — theassetsquare@gmail.com
+#   GMAIL_APP_PASSWORD — a Google "App Password" (16 chars, not your login pw)
+
+on:
+  schedule:
+    - cron: '20 3 * * *'   # KST 12:20, daily
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    # Secrets can't be used in `if:` directly — map them to env, then test env.
+    env:
+      GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+      GMAIL_USER: ${{ secrets.GMAIL_USER }}
+      GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Restore GSC credentials
+        if: ${{ env.GSC_CREDENTIALS != '' }}
+        run: |
+          mkdir -p .secrets
+          printf '%s' "$GSC_CREDENTIALS" > .secrets/theasset-gsc.json
+          echo "Credentials restored ($(wc -c < .secrets/theasset-gsc.json) bytes)."
+
+      - name: Submit sitemap to Google
+        if: ${{ env.GSC_CREDENTIALS != '' }}
+        run: node scripts/gsc.js submit-sitemap || true
+
+      - name: Run GSC monitor
+        if: ${{ env.GSC_CREDENTIALS != '' }}
+        id: mon
+        run: |
+          set +e
+          node scripts/gsc_monitor.js > gsc_report.txt 2>&1
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+          cat gsc_report.txt
+          PROBLEMS=$(grep '❌' gsc_report.txt || true)
+          {
+            echo 'problems<<EOF'
+            echo "${PROBLEMS:-none}"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Email alert on problems
+        if: ${{ steps.mon.outputs.exit != '0' && steps.mon.outputs.exit != '' && env.GMAIL_APP_PASSWORD != '' }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          from: ilsanroom2 SEO Bot <${{ secrets.GMAIL_USER }}>
+          to: theassetsquare@gmail.com
+          subject: '[ilsanroom2][🚨] GSC 문제 감지 — 확인 필요'
+          body: |
+            Google Search Console 모니터가 문제를 감지했습니다.
+
+            ${{ steps.mon.outputs.problems }}
+
+            전체 리포트는 GitHub Actions 로그를 확인하세요:
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - name: Upload report artifact
+        if: ${{ always() && env.GSC_CREDENTIALS != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gsc-report
+          path: gsc_report.txt
+          if-no-files-found: ignore
+        continue-on-error: true
+
+      - name: Notice when secret missing
+        if: ${{ env.GSC_CREDENTIALS == '' }}
+        run: echo "::warning::GSC_CREDENTIALS secret not set — skipping. Add it in repo Settings → Secrets → Actions."

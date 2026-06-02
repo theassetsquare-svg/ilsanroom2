@@ -32,7 +32,7 @@ jobs:
         run: |
           curl -sSf -X POST "https://api.indexnow.org/IndexNow" \
             -H "Content-Type: application/json; charset=utf-8" \
-            -d "{\"host\":\"ilsanroom2.pages.dev\",\"key\":\"${INDEXNOW_KEY}\",\"urlList\":[\"https://ilsanroom2.pages.dev/\",\"https://ilsanroom2.pages.dev/legal/\"]}" || true
+            -d "{\"host\":\"ilsanroom2.pages.dev\",\"key\":\"${INDEXNOW_KEY}\",\"urlList\":[\"https://ilsanroom2.pages.dev/\",\"https://ilsanroom2.pages.dev/guide/\",\"https://ilsanroom2.pages.dev/review/\",\"https://ilsanroom2.pages.dev/reservation/\",\"https://ilsanroom2.pages.dev/parking/\",\"https://ilsanroom2.pages.dev/area/\",\"https://ilsanroom2.pages.dev/faq/\",\"https://ilsanroom2.pages.dev/legal/\"]}" || true
 
       - name: Commit if changed
         run: |

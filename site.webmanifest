@@ -6,8 +6,8 @@
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0a0a0a",
-  "theme_color": "#8B0000",
+  "background_color": "#1a0a3e",
+  "theme_color": "#1a0a3e",
   "lang": "ko-KR",
   "categories": ["lifestyle", "travel", "food"],
   "icons": [
@@ -25,7 +25,7 @@
     }
   ],
   "shortcuts": [
-    { "name": "신실장 전화", "short_name": "전화", "url": "tel:01036954929" },
+    { "name": "예약 꿀팁", "short_name": "예약", "url": "/reservation/" },
     { "name": "라페스타", "short_name": "라페스타", "url": "/#lafesta" },
     { "name": "웨스턴돔", "short_name": "웨스턴돔", "url": "/#western" },
     { "name": "정발산역", "short_name": "정발산역", "url": "/#jeongbal" }
