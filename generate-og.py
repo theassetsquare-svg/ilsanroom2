@@ -1,16 +1,32 @@
 #!/usr/bin/env python3
 from PIL import Image, ImageDraw, ImageFont
 
-FONT_PATH = "/nix/store/al25l64xyi9lyw7yhsvsbdkn6z75jgkn-ghostscript-with-X-10.02.1/share/ghostscript/10.02.1/Resource/CIDFSubst/DroidSansFallback.ttf"
+
+# [2026-09-22] 폰트 경로 후보 탐색 — 원래 경로를 첫 후보로 그대로 두고,
+# 없으면 저장소 안 → Windows 시스템 폰트 순으로 찾는다. 리눅스 CI 동작은 그대로다.
+import os as _os
+def _pick_font(*cands):
+    for _p in cands:
+        if _p and _os.path.exists(_p):
+            return _p
+    raise OSError("한글 폰트를 못 찾았습니다: " + ", ".join(str(c) for c in cands if c))
+_HERE = _os.path.dirname(_os.path.abspath(__file__))
+_WIN = "C:/Windows/Fonts"
+FONT_PATH = _pick_font(
+    "/nix/store/al25l64xyi9lyw7yhsvsbdkn6z75jgkn-ghostscript-with-X-10.02.1/share/ghostscript/10.02.1/Resource/CIDFSubst/DroidSansFallback.ttf",
+    _os.path.join(_HERE, "NotoSansKR-Bold.ttf"),
+    _WIN + "/NotoSansKR-Bold.ttf",
+    _WIN + "/malgunbd.ttf",
+)
 
 W, H = 1200, 1200
 BG = "#1a1a2e"
 ACCENT = "#8B5CF6"
 BAR_H = 100
 
-# Main text = 신실장 (big, eye-catching)
+# Main text = 일산룸 총책임자 (big, eye-catching)
 # Sub text = 일산명월관
-main_text = "신실장"
+main_text = "일산룸 총책임자"
 sub_text = "일산명월관"
 bottom_text = "일산룸 현지인 가이드"
 
@@ -52,7 +68,7 @@ start_y = (H - total_h) // 2
 sub_x = (W - sub_tw) // 2
 draw.text((sub_x, start_y), sub_text, fill="#c4a0ff", font=sub_font)
 
-# Draw main text (신실장) — WHITE, HUGE
+# Draw main text (일산룸 총책임자) — WHITE, HUGE
 main_x = (W - main_tw) // 2
 main_y = start_y + sub_th + 40
 
