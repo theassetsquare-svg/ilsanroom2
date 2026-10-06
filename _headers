@@ -5,7 +5,7 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=()
 
 /
-  Link: </og-image.png>; rel=preload; as=image; fetchpriority=high
+  Link: </card-home-9a9fae2e.png>; rel=preload; as=image; fetchpriority=high
   Cache-Control: public, max-age=60, s-maxage=300, stale-while-revalidate=600
 
 /legal/
