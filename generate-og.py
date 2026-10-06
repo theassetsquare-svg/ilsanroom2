@@ -24,9 +24,9 @@ BG = "#1a1a2e"
 ACCENT = "#8B5CF6"
 BAR_H = 100
 
-# Main text = 일산룸 총책임자 (big, eye-catching)
+# Main text (big, eye-catching)
 # Sub text = 일산명월관
-main_text = "일산룸 총책임자"
+main_text = "광고문의"
 sub_text = "일산명월관"
 bottom_text = "일산룸 현지인 가이드"
 
@@ -68,7 +68,7 @@ start_y = (H - total_h) // 2
 sub_x = (W - sub_tw) // 2
 draw.text((sub_x, start_y), sub_text, fill="#c4a0ff", font=sub_font)
 
-# Draw main text (일산룸 총책임자) — WHITE, HUGE
+# Draw main text — WHITE, HUGE
 main_x = (W - main_tw) // 2
 main_y = start_y + sub_th + 40
 

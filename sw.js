@@ -1,11 +1,11 @@
 // 일산룸 현지인 가이드 Service Worker
-// version: 2026-06-02
-const CACHE = 'ilsanroom2-v2026-06-02';
+// version: 2026-10-06
+const CACHE = 'ilsanroom2-v2026-10-06';
 const ASSETS = [
   '/',
   '/style.css',
   '/script.js',
-  '/og-image.png',
+  '/card-home-9a9fae2e.png',
   '/site.webmanifest',
   '/guide/',
   '/review/',
